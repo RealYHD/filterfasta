@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Fasta Filter",
+            "type": "python",
+            "request": "launch",
+            "program": "fasta_filter.py",
+            "args": [
+                "reference_standards.fas",
+                "reference_stasndards_filtered.fas",
+                "-c", "rt"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
