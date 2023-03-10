@@ -14,5 +14,5 @@ A simple program to remove sequences in a fasta file containing specific strings
 
  1. Pretend `input.fasta` exists in the same folder as `fasta_filter.py` (the program file).
 
- 2. To remove all sequences in `input.fasta` that contain `rt` in the header and output to a new file called `input_filtered.fasta`, run: `python3 ./fasta_filter input.fasta input_filtered.fasta -c rt`
+ 2. To remove all sequences in `input.fasta` that contain `rt` in the header and output to a new file called `input_filtered.fasta`, run: `python3 ./fasta_filter.py input.fasta input_filtered.fasta -c rt`
 
