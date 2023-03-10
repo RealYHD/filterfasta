@@ -14,8 +14,8 @@ def main(args):
             kept_records.append(s_record)
         elif args.property == "all" and not (
             args.contains in s_record.id
-            and args.contains in s_record.name
-                and args.contains in s_record.description):
+            or args.contains in s_record.name
+                or args.contains in s_record.description):
             kept_records.append(s_record)
     SeqIO.write(
         kept_records,

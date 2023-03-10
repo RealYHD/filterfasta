@@ -11,7 +11,7 @@
             "program": "fasta_filter.py",
             "args": [
                 "reference_standards.fas",
-                "reference_stasndards_filtered.fas",
+                "reference_standards_filtered.fas",
                 "-c", "rt"
             ],
             "console": "integratedTerminal",
