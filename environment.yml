@@ -1,0 +1,9 @@
+name: filterfasta
+channels:
+  - conda-forge
+dependencies:
+  - build=0.7
+  - pytest=7
+  - twine=4
+  - biopython=1.81
+  - python=3.11
