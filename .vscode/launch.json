@@ -8,11 +8,12 @@
             "name": "Run Fasta Filter",
             "type": "python",
             "request": "launch",
-            "program": "fasta_filter.py",
+            "program": "${workspaceFolder}/filterfasta/filterfasta.py",
             "args": [
                 "reference_standards.fas",
                 "reference_standards_filtered.fas",
-                "-c", "rt"
+                "-c",
+                "rt"
             ],
             "console": "integratedTerminal",
             "justMyCode": true
