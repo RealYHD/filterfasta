@@ -8,7 +8,7 @@
             "name": "Run Fasta Filter",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/filterfasta/filterfasta.py",
+            "module": "filterfasta.cli",
             "args": [
                 "reference_standards.fas",
                 "reference_standards_filtered.fas",
