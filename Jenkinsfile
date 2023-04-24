@@ -23,6 +23,11 @@ pipeline {
                 sh "filterfasta -h"
             }
         }
+        stage("archive") {
+            steps {
+                archiveArtifacts artifacts: 'dist/*.tar.gz, dist/*.whl'
+            }
+        }
         stage("publish") {
             when {
                 branch '**/master'
