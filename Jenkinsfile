@@ -1,15 +1,15 @@
 pipeline {
-    agent any
-    stages {
-        stage("clean") {
-            steps {
-                sh 'rm -rf ./dist/*'
-            }
+    agent {
+        kubernetes {
+            cloud 'rsys-devel'
+            defaultContainer 'pip'
+            inheritFrom 'pip'
         }
+    }
+    stages {
         stage("install") {
             steps {
-                sh 'mamba env update --file environment.yml'
-                sh 'echo "mamba activate filterfasta" >> ~/.bashrc'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage("build") {
@@ -25,7 +25,7 @@ pipeline {
         }
         stage("archive") {
             steps {
-                archiveArtifacts artifacts: 'dist/*.tar.gz, dist/*.whl'
+                archiveArtifacts artifacts: 'dist/*.tar.gz, dist/*.whl', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
             }
         }
         stage("publish") {
@@ -33,8 +33,8 @@ pipeline {
                 branch '**/master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'rs-git-package-registry-ydeng', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                    sh "python -m twine upload --repository-url https://git.reslate.systems/api/packages/${USER}/pypi -u ${USER} -p ${PASS} --non-interactive --disable-progress-bar --verbose dist/*"
+                withCredentials([usernamePassword(credentialsId: '4d6f64be-d26d-4f95-8de3-b6a9b0beb311', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                    sh returnStdout: true, script: "python -m twine upload --repository-url https://git.reslate.systems/api/packages/${USER}/pypi -u ${USER} -p ${PASS} --non-interactive --disable-progress-bar --verbose dist/*"
                 }
             }
         }

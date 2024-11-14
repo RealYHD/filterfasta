@@ -7,3 +7,4 @@ dependencies:
   - twine=4
   - biopython=1.81
   - python=3.11
+prefix: ./env
