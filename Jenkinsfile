@@ -1,11 +1,12 @@
 pipeline {
-    agent any
-    stages {
-        stage("clean") {
-            steps {
-                sh 'rm -rf ./dist/*'
-            }
+    agent {
+        kubernetes {
+            cloud 'rsys-devel'
+            defaultContainer 'pip'
+            inheritFrom 'pip'
         }
+    }
+    stages {
         stage("install") {
             steps {
                 sh 'pip install -r requirements.txt'
